@@ -408,7 +408,7 @@ html, body { margin: 0; padding: 0; background: #dfe4f2; -webkit-print-color-adj
         <SlideHead kicker="04 · Screens" title="Confirmation and e-ticket" />
         <div className="grid flex-1 grid-cols-[1fr_1fr_1.1fr] items-center gap-8">
           <Shot src="book-success" caption="Step 5: PNR, coach and seat for each passenger." />
-          <Shot src="ticket" caption="E-ticket with boarding pass layout, barcode and download." />
+          <Shot src="ticket" caption="E-ticket with boarding pass layout, QR code and download." />
           <div className="space-y-3">
             <Note>PNR, coach and seat assigned at booking time.</Note>
             <Note>SMS alert with the e-ticket is queued to the verified number.</Note>

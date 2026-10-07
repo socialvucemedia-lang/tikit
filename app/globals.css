@@ -188,17 +188,6 @@ body {
   scrollbar-width: none;
 }
 
-.barcode {
-  display: flex;
-  align-items: stretch;
-  gap: 2px;
-  height: 56px;
-}
-.barcode span {
-  display: block;
-  border-radius: 1px;
-}
-
 @keyframes rise {
   from {
     opacity: 0;

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { AppShell, StatusPill } from "@/components/AppShell";
-import { Barcode } from "@/components/TicketCard";
+import { TicketQr } from "@/components/TicketCard";
 import { Icon } from "@/components/Icons";
 import { cancelBooking, getBooking } from "@/lib/mock";
 import { classLabel, humanDate, rupee } from "@/lib/format";
@@ -174,8 +174,7 @@ export default function TicketPage() {
           </div>
 
           <div className="mt-5 rounded-xl bg-[#f8faff] p-3">
-            <Barcode value={b.pnr} />
-            <p className="mt-2 text-center text-[11px] font-bold tracking-[0.35em] text-ink">{b.pnr}</p>
+            <TicketQr booking={b} />
           </div>
 
           <p className="mt-3 text-center text-[11px] text-inkmuted">

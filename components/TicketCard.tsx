@@ -1,23 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import QRCode from "react-qr-code";
 import type { Booking } from "@/lib/types";
 import { classLabel, humanDate, rupee } from "@/lib/format";
 import { Icon } from "./Icons";
 import { StatusPill } from "./AppShell";
 
-export function Barcode({ value, className = "" }: { value: string; className?: string }) {
-  const bars: Array<{ w: number; dark: boolean }> = [];
-  for (const ch of value) {
-    const code = ch.charCodeAt(0);
-    bars.push({ w: (code % 3) + 1, dark: true });
-    bars.push({ w: (code % 2) + 1, dark: false });
-  }
+export function TicketQr({ booking, size = 148 }: { booking: Booking; size?: number }) {
+  const payload = [
+    "TIKIT",
+    booking.pnr,
+    booking.trainNo,
+    booking.date,
+    `${booking.from.code}-${booking.to.code}`,
+    booking.classCode,
+    booking.passengers.map((p) => p.name).join(", "),
+  ].join("|");
   return (
-    <div className={`barcode ${className}`} aria-label={`Barcode ${value}`}>
-      {bars.map((b, i) => (
-        <span key={i} style={{ width: `${b.w * 2}px`, background: b.dark ? "#0d1b4c" : "transparent" }} />
-      ))}
+    <div className="flex flex-col items-center">
+      <div className="rounded-2xl bg-white p-3 ring-1 ring-line">
+        <QRCode value={payload} size={size} fgColor="#0d1b4c" bgColor="#ffffff" aria-label={`QR code ${booking.pnr}`} />
+      </div>
+      <p className="mt-2 text-center text-[11px] font-bold tracking-[0.35em] text-ink">{booking.pnr}</p>
+      <p className="mt-0.5 text-[10px] text-inkmuted">Scan to verify this ticket</p>
     </div>
   );
 }
