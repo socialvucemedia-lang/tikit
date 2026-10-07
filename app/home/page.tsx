@@ -6,12 +6,10 @@ import { useRouter } from "next/navigation";
 import {
   ArrowRightLeftIcon,
   ChevronRightIcon,
-  LogInIcon,
   PhoneCallIcon,
   SearchIcon,
   SparklesIcon,
   TrainFrontIcon,
-  UserRoundIcon,
   WifiOffIcon,
 } from "lucide-react";
 
@@ -19,7 +17,6 @@ import { AppShell } from "@/components/AppShell";
 import { BookingCard } from "@/components/BookingCard";
 import { StationCombobox } from "@/components/StationCombobox";
 import { DatePicker } from "@/components/DatePicker";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -220,22 +217,25 @@ export default function HomePage() {
         </CardContent>
       </Card>
 
-      {!ready ? null : !user ? (
-        <Alert className="mt-4">
-          <UserRoundIcon />
-          <AlertTitle>Log in to book in 6 taps</AlertTitle>
-          <AlertDescription>
-            Dummy login with any mobile number. Demo OTP: 123456
-            <Link
-              href="/login"
-              className={buttonVariants({ size: "sm", className: "mt-2 w-full" })}
-            >
-              <LogInIcon />
-              Log in
-            </Link>
-          </AlertDescription>
-        </Alert>
-      ) : null}
+      {/*
+        Hidden login prompt: the landing page already covers login.
+        {!ready ? null : !user ? (
+          <Alert className="mt-4">
+            <UserRoundIcon />
+            <AlertTitle>Log in to book in 6 taps</AlertTitle>
+            <AlertDescription>
+              Dummy login with any mobile number. Demo OTP: 123456
+              <Link
+                href="/login"
+                className={buttonVariants({ size: "sm", className: "mt-2 w-full" })}
+              >
+                <LogInIcon />
+                Log in
+              </Link>
+            </AlertDescription>
+          </Alert>
+        ) : null}
+      */}
 
       {active ? (
         <section className="mt-5">
